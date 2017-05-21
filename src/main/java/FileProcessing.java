@@ -19,29 +19,29 @@ public class FileProcessing implements Runnable {
     }
 
     public void run() {
-        synchronized (concurrentLinkedQueue) {
-            while (true){
-                System.out.println(Thread.currentThread().getName());
+            while (true) {
+                synchronized (concurrentLinkedQueue) {
                 if (!concurrentLinkedQueue.isEmpty()) {
+
                     try {
                         outputStream.write(concurrentLinkedQueue.poll().getBytes());
+                        System.out.println(Thread.currentThread().getName());
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }
-                try {
+              try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-                if (concurrentLinkedQueue.isEmpty()){
+                if(concurrentLinkedQueue.size() == 0){
                     break;
                 }
 
-          }
+            }
+        }
         }
 
     }
-}
+
