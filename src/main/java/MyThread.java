@@ -5,10 +5,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 public class MyThread implements Runnable {
     private ConcurrentLinkedQueue<String> concurrentLinkedQueue;
-    private String input;
+    private String input [];
 
-    public MyThread(ConcurrentLinkedQueue<String> concurrentLinkedQueue){
+
+    public MyThread(ConcurrentLinkedQueue<String> concurrentLinkedQueue, String input[]){
         this.concurrentLinkedQueue = concurrentLinkedQueue;
+        this.input = input;
 
     }
 
@@ -18,11 +20,12 @@ public class MyThread implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            for (int i = 0; i < 10; i++) {
+            synchronized (input){
+            for (int i = 0; i < input.length; i++) { //TODO: implement adding to queue using ultiple threads
                 concurrentLinkedQueue.add("Record =" + i + ";");
                 System.out.println("Add to queue: "+Thread.currentThread().getName());
 
-        }
+        }}
     }
 
 }

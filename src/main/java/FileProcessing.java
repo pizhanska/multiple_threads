@@ -25,7 +25,7 @@ public class FileProcessing implements Runnable {
 
                     try {
                         outputStream.write(concurrentLinkedQueue.poll().getBytes());
-                        System.out.println(Thread.currentThread().getName());
+                        System.out.println("Add to stream: "+ Thread.currentThread().getName());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
