@@ -13,4 +13,5 @@ buildNumber.properties
 *.iws
 *.iml
 *.log
+*.txt
 target/
