@@ -2,16 +2,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-/**
+/**\
  * Created by Uliana Pizhanska on 19/05/2017.
  */
 public class FileProcessing implements Runnable {
 
     private FileOutputStream outputStream;
     private ConcurrentLinkedQueue<String> concurrentLinkedQueue;
-
-    public FileProcessing() {
-    }
 
     public FileProcessing(FileOutputStream outputStream, ConcurrentLinkedQueue<String> concurrentLinkedQueue) {
         this.outputStream = outputStream;
@@ -25,7 +22,7 @@ public class FileProcessing implements Runnable {
 
                     try {
                         outputStream.write(concurrentLinkedQueue.poll().getBytes());
-                        System.out.println("Add to stream: "+ Thread.currentThread().getName());
+                        System.out.println("This thread writes to file : "+ Thread.currentThread().getName());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
