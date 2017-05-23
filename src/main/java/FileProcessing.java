@@ -2,7 +2,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-/**
+/**\
  * Created by Uliana Pizhanska on 19/05/2017.
  */
 public class FileProcessing implements Runnable {
