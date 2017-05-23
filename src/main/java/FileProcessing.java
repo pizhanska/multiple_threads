@@ -10,9 +10,6 @@ public class FileProcessing implements Runnable {
     private FileOutputStream outputStream;
     private ConcurrentLinkedQueue<String> concurrentLinkedQueue;
 
-    public FileProcessing() {
-    }
-
     public FileProcessing(FileOutputStream outputStream, ConcurrentLinkedQueue<String> concurrentLinkedQueue) {
         this.outputStream = outputStream;
         this.concurrentLinkedQueue = concurrentLinkedQueue;
@@ -25,7 +22,7 @@ public class FileProcessing implements Runnable {
 
                     try {
                         outputStream.write(concurrentLinkedQueue.poll().getBytes());
-                        System.out.println("Add to stream: "+ Thread.currentThread().getName());
+                        System.out.println("This thread writes to file : "+ Thread.currentThread().getName());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
